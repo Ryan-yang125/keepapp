@@ -8,7 +8,7 @@ const loadFaceModel = async () => {
   await faceapi.loadFaceExpressionModel(MODEL_URL);
 };
 
-const Emotion = () => {
+const FaceCapturer = () => {
   const videoRef = useRef(null);
   const [ifLoadModel, setIfLoadModel] = useState(false);
 
@@ -42,7 +42,7 @@ const Emotion = () => {
       .detectSingleFace(videoRef.current, option)
       .withFaceExpressions();
     console.log(result);
-    setTimeout(() => onPlay());
+    // setTimeout(() => onPlay());
   };
   return (
     <div>
@@ -53,4 +53,4 @@ const Emotion = () => {
   );
 };
 
-export default Emotion;
+export default FaceCapturer;
