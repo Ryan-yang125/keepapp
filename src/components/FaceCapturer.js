@@ -8,7 +8,7 @@ const loadFaceModel = async () => {
   await faceapi.loadFaceExpressionModel(MODEL_URL);
 };
 
-const FaceCapturer = () => {
+const FaceCapturer = ({ onEmotionChange }) => {
   const videoRef = useRef(null);
   const [ifLoadModel, setIfLoadModel] = useState(false);
 
@@ -23,7 +23,7 @@ const FaceCapturer = () => {
 
   const getVideo = async () => {
     let stream = await navigator.mediaDevices.getUserMedia({
-      video: { width: 300 },
+      video: { width: 262, height: 337 },
     });
     let video = videoRef.current;
     video.srcObject = stream;
@@ -41,15 +41,18 @@ const FaceCapturer = () => {
     const result = await faceapi
       .detectSingleFace(videoRef.current, option)
       .withFaceExpressions();
-    console.log(result);
-    // setTimeout(() => onPlay());
+    if (result) {
+      onEmotionChange(result.expressions);
+    }
+    // console.log(result?.expressions);
+    setTimeout(() => onPlay());
   };
   return (
-    <div>
+    <>
       <div>
         <video ref={videoRef} onLoadedMetadata={onPlay} />
       </div>
-    </div>
+    </>
   );
 };
 
