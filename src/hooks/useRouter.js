@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import queryString from "query-string";
 import {
   useParams,
   useLocation,
@@ -23,7 +24,7 @@ export function useRouter() {
       // so that they can be used interchangeably.
       // Example: /:topic?sort=popular -> { topic: "react", sort: "popular" }
       query: {
-        // ...queryString.parse(location.search), // Convert string to object
+        ...queryString.parse(location.search), // Convert string to object
         ...params,
       },
       // Include match, location, history objects so we have

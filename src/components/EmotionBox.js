@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 
+import { useRouter } from "../hooks/useRouter";
 const useStyles = makeStyles({
   root: {
     display: "flex",
@@ -42,51 +43,36 @@ const tableNext = {
 
 const check = ["happy", "surprised", "angry", "happy", "surprised", "angry"];
 
-const threshould = 0.99;
-export default function EmotionBox({ emotion }) {
+export default function EmotionBox({ emotion, onProgressChange, initCount }) {
   const classes = useStyles();
-  const [count, setCount] = useState(0);
-
+  const router = useRouter();
+  const [count, setCount] = useState(+initCount || 0);
+  console.log(count);
   const ifMatch = (emotion) => {
     let emotionNow = emotion[check[count]];
-
-    if (check[count] === "surprised") {
-      if (emotionNow > 0.99) {
-        console.log(`${check[count]}: Ok`);
-        setCount(count + 1);
-      } else {
-        console.log(`${check[count]}: No`);
-      }
-    } else if (check[count] === "happy") {
-      // TODO
-      if (emotionNow - 0.1 > 0.9) {
-        console.log(`${check[count]}: Ok`);
-        setCount(count + 1);
-      } else {
-        console.log(`${check[count]}: No`);
-      }
-    } else if (check[count] === "angry") {
-      if (emotionNow + 0.3 > 0.9) {
-        console.log(`${check[count]}: Ok`);
-        setCount(count + 1);
-      } else {
-        console.log(`${check[count]}: No`);
-      }
+    let threshouldTable = {
+      surprised: 0.99,
+      happy: 0.99,
+      angry: 0.6,
+    };
+    if (emotionNow > threshouldTable[check[count]]) {
+      console.log(`${check[count]}: Ok`);
+      setCount(count + 1);
+      onProgressChange({ count: count + 1, length: check.length });
+    } else {
+      console.log(`${check[count]}: No`);
     }
   };
   const emotionNumFix = (emotion) => {
     let result = null;
-    const num = emotion ? emotion[check[count]].toFixed(2) * 100 : 0;
-    if (check[count] === "surprised") {
-      result = ~~(num / 10) * 10;
-      console.log("surprised:" + result);
-    } else if (check[count] === "happy") {
-      result = (~~(num / 10) - 1) * 10;
-      console.log("happy:" + result);
-    } else if (check[count] === "angry") {
-      result = (~~(num / 10) + 3) * 10;
-      console.log("angry:" + result);
-    }
+    const num = emotion ? emotion[check[count]]?.toFixed(2) * 100 : 0;
+    const fixTable = {
+      surprised: 0,
+      happy: -1,
+      angry: 3,
+    };
+    result = (~~(num / 10) + fixTable[check[count]]) * 10;
+    console.log(check[count], result);
     return result;
   };
 

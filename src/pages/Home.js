@@ -9,6 +9,7 @@ const useStyles = makeStyles({
   },
   image: {
     width: 375,
+    margin: "10px",
   },
 });
 

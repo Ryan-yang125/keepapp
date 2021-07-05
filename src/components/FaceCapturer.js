@@ -38,12 +38,13 @@ const FaceCapturer = ({ onEmotionChange }) => {
       inputSize,
       scoreThreshold,
     });
-    const result = await faceapi
-      .detectSingleFace(videoRef.current, option)
-      .withFaceExpressions();
-    if (result) {
-      onEmotionChange(result.expressions);
+    let result;
+    if (videoRef.current) {
+      result = await faceapi
+        .detectSingleFace(videoRef.current, option)
+        .withFaceExpressions();
     }
+    result && onEmotionChange(result.expressions);
     // console.log(result?.expressions);
     setTimeout(() => onPlay());
   };

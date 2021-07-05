@@ -1,23 +1,11 @@
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
+
 import TimeCounter from "../components/TimeCounter";
 import FaceCapturer from "../components/FaceCapturer";
-import LinearProgress from "@material-ui/core/LinearProgress";
 import EmotionBox from "../components/EmotionBox";
+import BorderLinearProgress from "../components/BorderLinearProgress";
 import { useState, useEffect } from "react";
-
-const BorderLinearProgress = withStyles((theme) => ({
-  root: {
-    height: 10,
-  },
-  colorPrimary: {
-    backgroundColor:
-      theme.palette.grey[theme.palette.type === "light" ? 200 : 700],
-  },
-  bar: {
-    backgroundColor: "#6DBEF8",
-  },
-}))(LinearProgress);
-
+import { useRouter } from "../hooks/useRouter";
 const useStyles = makeStyles({
   container: {
     display: "flex",
@@ -25,7 +13,7 @@ const useStyles = makeStyles({
     alignItems: "center",
   },
   progresser: {
-    margin: "2.5em",
+    margin: "2.5em 1.5em",
   },
   stopContainer: {
     marginBottom: "1em",
@@ -54,25 +42,50 @@ const useStyles = makeStyles({
 });
 export default function SoftTrainer() {
   const classes = useStyles();
+  const router = useRouter();
   const [emotion, setEmotion] = useState(null);
+  const [progress, setProgress] = useState(null);
 
   const onEmotionChange = (emotion) => {
     setEmotion(emotion);
   };
+  const onProgressChange = (progress) => {
+    setProgress(progress);
+  };
+  const toStopPage = (e) => {
+    router.push(
+      `/stop/query?count=${progress?.count}&length=${progress?.length}`
+    );
+  };
+  const getProgressValue = (progress) =>
+    ~~((progress.count * 100) / progress.length);
 
+  const getProgressValueByQuery = () =>
+    router.query.count
+      ? ~~((router.query.count * 100) / router.query.length)
+      : 0;
   return (
     <div>
       <div className={classes.progresser}>
-        <BorderLinearProgress variant="determinate" value={50} />
+        <BorderLinearProgress
+          variant="determinate"
+          value={
+            progress ? getProgressValue(progress) : getProgressValueByQuery()
+          }
+        />
       </div>
-      <div className={classes.container}>
+      <div className={classes.container} onClick={toStopPage}>
         <div className={classes.stopContainer}>
           <img src="/images/icons/stop.png" alt="stop" />
         </div>
         <FaceCapturer onEmotionChange={onEmotionChange} />
         <div className={classes.bottom}>
           <div className={classes.blueButton}>查看讲解</div>
-          <EmotionBox emotion={emotion} />
+          <EmotionBox
+            emotion={emotion}
+            onProgressChange={onProgressChange}
+            initCount={router.query.count}
+          />
         </div>
       </div>
     </div>
