@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
-
-import { useRouter } from "../hooks/useRouter";
 const useStyles = makeStyles({
   root: {
     display: "flex",
@@ -16,12 +14,23 @@ const useStyles = makeStyles({
     opacity: "0.6",
     zIndex: 3,
     position: "relative",
-    right: "54px",
+    right: "35px",
+    bottom: "30px",
     // background: "linear-gradient(to top, #B3DDFB 60%, white 0%)",
+  },
+  checkedImage: {
+    width: "58px",
+    height: "58px",
+    position: "relative",
+    right: "40px",
+    zIndex: 2,
   },
   imageNow: {
     width: "58px",
     height: "58px",
+    position: "relative",
+    right: "40px",
+    top: "27px",
     zIndex: 2,
   },
   imageNext: {
@@ -45,9 +54,8 @@ const check = ["happy", "surprised", "angry", "happy", "surprised", "angry"];
 
 export default function EmotionBox({ emotion, onProgressChange, initCount }) {
   const classes = useStyles();
-  const router = useRouter();
   const [count, setCount] = useState(+initCount || 0);
-  console.log(count);
+  const [checked, setChecked] = useState(false);
   const ifMatch = (emotion) => {
     let emotionNow = emotion[check[count]];
     let threshouldTable = {
@@ -57,8 +65,12 @@ export default function EmotionBox({ emotion, onProgressChange, initCount }) {
     };
     if (emotionNow > threshouldTable[check[count]]) {
       console.log(`${check[count]}: Ok`);
+      setChecked(true);
       setCount(count + 1);
       onProgressChange({ count: count + 1, length: check.length });
+      setTimeout(() => {
+        setChecked(false);
+      }, 1000);
     } else {
       console.log(`${check[count]}: No`);
     }
@@ -82,25 +94,36 @@ export default function EmotionBox({ emotion, onProgressChange, initCount }) {
 
   return (
     <div className={classes.root}>
-      <img
-        src={table[check[count]]}
-        alt="emotion"
-        className={classes.imageNow}
-      />
-      <div
-        className={classes.progressBar}
-        style={{
-          background: `linear-gradient(to top, #B3DDFB ${emotionNumFix(
-            emotion
-          )}%, white 0%)`,
-        }}
-      ></div>
+      {checked ? (
+        <img
+          src="/images/icons/checked.svg"
+          alt=""
+          className={classes.checkedImage}
+        />
+      ) : (
+        <div>
+          <img
+            src={table[check[count]]}
+            // src="/images/icons/checked.svg"
+            alt="emotion"
+            className={classes.imageNow}
+          />
+          <div
+            className={classes.progressBar}
+            style={{
+              background: `linear-gradient(to top, #B3DDFB ${emotionNumFix(
+                emotion
+              )}%, white 0%)`,
+            }}
+          ></div>
+        </div>
+      )}
+
       <img
         src={tableNext[check[count + 1]]}
         alt="emotion"
         className={classes.imageNext}
       />
-      <img src="/images/icons/checked.svg" alt="" />
     </div>
   );
 }
