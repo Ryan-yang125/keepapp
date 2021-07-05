@@ -1,6 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-import TimeCounter from "../components/TimeCounter";
 import FaceCapturer from "../components/FaceCapturer";
 import BorderLinearProgress from "../components/BorderLinearProgress";
 import { useState } from "react";

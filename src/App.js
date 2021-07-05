@@ -8,21 +8,27 @@ export default function App() {
   return (
     <Router>
       <div>
-        <Route exact path="/" component={Home} />
-        <Route path="/soft" component={SoftTrainer} />
-        <Route path="/detailsoft">
+        <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
+        <Route
+          path={`${process.env.PUBLIC_URL}/soft`}
+          component={SoftTrainer}
+        />
+        <Route path={`${process.env.PUBLIC_URL}/detailsoft`}>
           <Detail
             gifUrl="/images/details/detailgif.png"
             detailUrl="/images/details/detailsoft.png"
           />
         </Route>
-        <Route path="/detailhard">
+        <Route path={`${process.env.PUBLIC_URL}/detailhard`}>
           <Detail
             gifUrl="/images/details/detailgif.png"
             detailUrl="/images/details/detailhard.png"
           />
         </Route>
-        <Route path="/stop" component={StopPage} />
+        <Route
+          path={`${process.env.PUBLIC_URL}/detailhard/stop`}
+          component={StopPage}
+        />
       </div>
     </Router>
   );
