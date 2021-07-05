@@ -2,9 +2,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import TimeCounter from "../components/TimeCounter";
 import FaceCapturer from "../components/FaceCapturer";
-import EmotionBox from "../components/EmotionBox";
 import BorderLinearProgress from "../components/BorderLinearProgress";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "../hooks/useRouter";
 const useStyles = makeStyles({
   container: {
@@ -40,6 +39,7 @@ const useStyles = makeStyles({
     borderRadius: "0.8em",
     margin: "50px",
   },
+  tipC: {},
 });
 export default function SoftTrainer() {
   const classes = useStyles();
@@ -84,16 +84,12 @@ export default function SoftTrainer() {
           <div
             className={classes.blueButton}
             onClick={() => {
-              router.push("/detailsoft");
+              router.push("/detailhard");
             }}
           >
             查看讲解
           </div>
-          <EmotionBox
-            emotion={emotion}
-            onProgressChange={onProgressChange}
-            initCount={router.query.count}
-          />
+          <div className={classes.tipC}>跟随提示按摩面部肌肉</div>
         </div>
       </div>
     </div>
