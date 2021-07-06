@@ -39,15 +39,15 @@ const useStyles = makeStyles({
   },
 });
 const table = {
-  angry: "/images/emotions/angry.png",
-  happy: "/images/emotions/happy.png",
-  surprised: "/images/emotions/surprised.png",
+  angry: "images/emotions/angry.png",
+  happy: "images/emotions/happy.png",
+  surprised: "images/emotions/surprised.png",
 };
 
 const tableNext = {
-  angry: "/images/emotions/angryNext.png",
-  happy: "/images/emotions/happyNext.png",
-  surprised: "/images/emotions/surprisedNext.png",
+  angry: "images/emotions/angryNext.png",
+  happy: "images/emotions/happyNext.png",
+  surprised: "images/emotions/surprisedNext.png",
 };
 
 const check = ["happy", "surprised", "angry", "happy", "surprised", "angry"];
@@ -96,7 +96,7 @@ export default function EmotionBox({ emotion, onProgressChange, initCount }) {
     <div className={classes.root}>
       {checked ? (
         <img
-          src="/images/icons/checked.svg"
+          src="images/icons/checked.svg"
           alt=""
           className={classes.checkedImage}
         />
@@ -104,7 +104,7 @@ export default function EmotionBox({ emotion, onProgressChange, initCount }) {
         <div>
           <img
             src={table[check[count]]}
-            // src="/images/icons/checked.svg"
+            // src="images/icons/checked.svg"
             alt="emotion"
             className={classes.imageNow}
           />

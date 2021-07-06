@@ -45,7 +45,7 @@ export default function StopPage() {
         />
       </div>
       <div className={classes.expContainer}>
-        <img src="/images/stop/exp.png" alt="" className={classes.image} />
+        <img src="images/stop/exp.png" alt="" className={classes.image} />
       </div>
       <div className={classes.container}>
         <IconButton
@@ -71,7 +71,7 @@ function IconButton({ type, onClick }) {
       onClick={onClick}
     >
       <img
-        src={`/images/icons/${type}.svg`}
+        src={`images/icons/${type}.svg`}
         alt=""
         style={{
           width: "118px",

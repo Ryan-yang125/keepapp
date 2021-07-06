@@ -1,6 +1,6 @@
-import todo1 from "../images/todos/1.png";
-import todo2 from "../images/todos/2.png";
-import todo3 from "../images/todos/3.png";
+import todo1 from "..images/todos/1.png";
+import todo2 from "..images/todos/2.png";
+import todo3 from "..images/todos/3.png";
 import { makeStyles } from "@material-ui/core/styles";
 import { useRouter } from "../hooks/useRouter";
 

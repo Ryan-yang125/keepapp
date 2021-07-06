@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router, Route } from "react-router-dom";
 
 import SoftTrainer from "./pages/SoftTrainer";
 import Home from "./pages/Home";
@@ -8,27 +8,21 @@ export default function App() {
   return (
     <Router>
       <div>
-        <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
-        <Route
-          path={`${process.env.PUBLIC_URL}/soft`}
-          component={SoftTrainer}
-        />
-        <Route path={`${process.env.PUBLIC_URL}/detailsoft`}>
+        <Route exact path={`/`} component={Home} />
+        <Route path={`/soft`} component={SoftTrainer} />
+        <Route path={`/detailsoft`}>
           <Detail
-            gifUrl="/images/details/detailgif.png"
-            detailUrl="/images/details/detailsoft.png"
+            gifUrl="images/details/detailgif.png"
+            detailUrl="images/details/detailsoft.png"
           />
         </Route>
-        <Route path={`${process.env.PUBLIC_URL}/detailhard`}>
+        <Route path={`/detailhard`}>
           <Detail
-            gifUrl="/images/details/detailgif.png"
-            detailUrl="/images/details/detailhard.png"
+            gifUrl="images/details/detailgif.png"
+            detailUrl="images/details/detailhard.png"
           />
         </Route>
-        <Route
-          path={`${process.env.PUBLIC_URL}/detailhard/stop`}
-          component={StopPage}
-        />
+        <Route path={`/stop`} component={StopPage} />
       </div>
     </Router>
   );

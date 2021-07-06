@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as faceapi from "face-api.js";
 
-const MODEL_URL = "/models";
+const MODEL_URL = "models/";
 
 const loadFaceModel = async () => {
   await faceapi.loadTinyFaceDetectorModel(MODEL_URL);
@@ -46,7 +46,7 @@ const FaceCapturer = ({ onEmotionChange }) => {
     }
     result && onEmotionChange(result.expressions);
     // console.log(result?.expressions);
-    // setTimeout(() => onPlay());
+    setTimeout(() => onPlay());
   };
   return (
     <>

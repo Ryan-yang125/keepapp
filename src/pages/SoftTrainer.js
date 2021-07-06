@@ -75,9 +75,9 @@ export default function SoftTrainer() {
           }
         />
       </div>
-      <div className={classes.container} onClick={toStopPage}>
-        <div className={classes.stopContainer}>
-          <img src="/images/icons/stop.png" alt="stop" />
+      <div className={classes.container}>
+        <div className={classes.stopContainer} onClick={toStopPage}>
+          <img src="images/icons/stop.png" alt="stop" />
         </div>
         <FaceCapturer onEmotionChange={onEmotionChange} />
         <div className={classes.bottom}>
