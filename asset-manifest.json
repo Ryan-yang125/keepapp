@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/keepapp/static/css/main.e31fdd98.chunk.css",
-    "main.js": "/keepapp/static/js/main.a3eadc8c.chunk.js",
-    "main.js.map": "/keepapp/static/js/main.a3eadc8c.chunk.js.map",
+    "main.js": "/keepapp/static/js/main.ad892a0e.chunk.js",
+    "main.js.map": "/keepapp/static/js/main.ad892a0e.chunk.js.map",
     "runtime-main.js": "/keepapp/static/js/runtime-main.e0a0ef83.js",
     "runtime-main.js.map": "/keepapp/static/js/runtime-main.e0a0ef83.js.map",
     "static/js/2.d5573d01.chunk.js": "/keepapp/static/js/2.d5573d01.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.e0a0ef83.js",
     "static/js/2.d5573d01.chunk.js",
     "static/css/main.e31fdd98.chunk.css",
-    "static/js/main.a3eadc8c.chunk.js"
+    "static/js/main.ad892a0e.chunk.js"
   ]
 }
