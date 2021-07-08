@@ -45,5 +45,6 @@
   },
   "devDependencies": {
     "gh-pages": "^3.2.3"
-  }
+  },
+  "homepage": "https://ryan-yang125.github.io/keepapp"
 }
