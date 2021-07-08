@@ -1,24 +1,27 @@
 import { HashRouter as Router, Route } from "react-router-dom";
-
+import Start from "./pages/Start";
 import SoftTrainer from "./pages/SoftTrainer";
 import Home from "./pages/Home";
 import StopPage from "./pages/StopPage";
 import Detail from "./pages/Detail";
+import HardTrainer from "./pages/HardTrainer";
 export default function App() {
   return (
     <Router>
       <div>
-        <Route exact path={`/`} component={Home} />
+        <Route exact path={`/`} component={Start} />
+        <Route path={`/home`} component={Home} />
         <Route path={`/soft`} component={SoftTrainer} />
+        <Route path={`/hard`} component={HardTrainer} />
         <Route path={`/detailsoft`}>
           <Detail
-            gifUrl="images/details/detailgif.png"
+            gifUrl="images/details/softDetail.gif"
             detailUrl="images/details/detailsoft.png"
           />
         </Route>
         <Route path={`/detailhard`}>
           <Detail
-            gifUrl="images/details/detailgif.png"
+            gifUrl="images/details/hardDetail.gif"
             detailUrl="images/details/detailhard.png"
           />
         </Route>

@@ -23,7 +23,7 @@ const FaceCapturer = ({ onEmotionChange }) => {
 
   const getVideo = async () => {
     let stream = await navigator.mediaDevices.getUserMedia({
-      video: { width: 262, height: 337 },
+      video: { width: 262, height: 337, facingMode: "user" },
     });
     let video = videoRef.current;
     video.srcObject = stream;
@@ -32,6 +32,7 @@ const FaceCapturer = ({ onEmotionChange }) => {
 
   const onPlay = async () => {
     // tiny_face_detector options
+    // videoRef.current.play();
     let inputSize = 512;
     let scoreThreshold = 0.5;
     const option = new faceapi.TinyFaceDetectorOptions({

@@ -40,7 +40,7 @@ const useStyles = makeStyles({
   },
   tipC: {},
 });
-export default function SoftTrainer() {
+export default function HardTrainer() {
   const classes = useStyles();
   const router = useRouter();
   const [emotion, setEmotion] = useState(null);
@@ -74,8 +74,8 @@ export default function SoftTrainer() {
           }
         />
       </div>
-      <div className={classes.container} onClick={toStopPage}>
-        <div className={classes.stopContainer}>
+      <div className={classes.container}>
+        <div className={classes.stopContainer} onClick={toStopPage}>
           <img src="images/icons/stop.png" alt="stop" />
         </div>
         <FaceCapturer onEmotionChange={onEmotionChange} />
