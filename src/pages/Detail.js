@@ -5,14 +5,13 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    width: "75vw",
   },
   gif: {
-    width: "75vw",
+    width: "100vw",
   },
   detail: {
-    width: "75vw",
-    height: "45vh",
+    width: "100vw",
+    height: "60vh",
   },
   blueButton: {
     backgroundColor: "#0095FF",
@@ -41,8 +40,7 @@ export default function Detail({ gifUrl, detailUrl }) {
           router.history.goBack();
         }}
       >
-        {" "}
-        返回训练{" "}
+        返回训练
       </div>
     </div>
   );

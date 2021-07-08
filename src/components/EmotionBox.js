@@ -50,7 +50,7 @@ const tableNext = {
   surprised: "images/emotions/surprisedNext.png",
 };
 
-const check = ["happy", "surprised", "angry", "happy", "surprised", "angry"];
+const check = ["happy", "surprised", "angry", "surprised", "happy"];
 
 export default function EmotionBox({ emotion, onProgressChange, initCount }) {
   const classes = useStyles();
@@ -61,9 +61,9 @@ export default function EmotionBox({ emotion, onProgressChange, initCount }) {
     let threshouldTable = {
       surprised: 0.99,
       happy: 0.99,
-      angry: 0.6,
+      angry: 0.1,
     };
-    if (emotionNow > threshouldTable[check[count]]) {
+    if (emotionNow >= threshouldTable[check[count]]) {
       console.log(`${check[count]}: Ok`);
       setChecked(true);
       setCount(count + 1);
@@ -81,7 +81,7 @@ export default function EmotionBox({ emotion, onProgressChange, initCount }) {
     const fixTable = {
       surprised: 0,
       happy: -1,
-      angry: 3,
+      angry: 1,
     };
     result = (~~(num / 10) + fixTable[check[count]]) * 10;
     console.log(check[count], result);

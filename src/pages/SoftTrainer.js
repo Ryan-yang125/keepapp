@@ -46,6 +46,13 @@ export default function SoftTrainer() {
   const router = useRouter();
   const [emotion, setEmotion] = useState(null);
   const [progress, setProgress] = useState(null);
+  useEffect(() => {
+    if (progress) {
+      if (progress.count === progress.length - 1) {
+        router.push("/softend");
+      }
+    }
+  }, [progress]);
 
   const onEmotionChange = (emotion) => {
     setEmotion(emotion);

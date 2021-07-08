@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import StopPage from "./pages/StopPage";
 import Detail from "./pages/Detail";
 import HardTrainer from "./pages/HardTrainer";
+import SoftEnd from "./pages/SoftEnd";
 export default function App() {
   return (
     <Router>
@@ -13,6 +14,7 @@ export default function App() {
         <Route path={`/home`} component={Home} />
         <Route path={`/soft`} component={SoftTrainer} />
         <Route path={`/hard`} component={HardTrainer} />
+        <Route path={`/softend`} component={SoftEnd} />
         <Route path={`/detailsoft`}>
           <Detail
             gifUrl="images/details/softDetail.gif"
