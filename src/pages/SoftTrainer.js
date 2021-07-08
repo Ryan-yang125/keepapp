@@ -86,6 +86,12 @@ export default function SoftTrainer() {
         <div className={classes.stopContainer} onClick={toStopPage}>
           <img src="images/icons/stop.png" alt="stop" />
         </div>
+        <iframe
+          src="https://ryan-yang125.github.io/face-capture/"
+          title="camera"
+          allow="camera; microphone"
+          frameBorder="0"
+        />
         <FaceCapturer onEmotionChange={onEmotionChange} />
         <div className={classes.bottom}>
           <div

@@ -52,7 +52,11 @@ const FaceCapturer = ({ onEmotionChange }) => {
   return (
     <>
       <div>
-        <video ref={videoRef} onLoadedMetadata={onPlay} />
+        <video
+          ref={videoRef}
+          onLoadedMetadata={onPlay}
+          style={{ display: "none" }}
+        />
       </div>
     </>
   );
