@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import FaceCapturer from "../components/FaceCapturer";
 import BorderLinearProgress from "../components/BorderLinearProgress";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "../hooks/useRouter";
 import HardBox from "../components/HardBox";
 const useStyles = makeStyles({
@@ -37,43 +37,37 @@ const useStyles = makeStyles({
     alignItems: "center",
     boxShadow: "0px 7px 12px 0px rgba(152, 152, 152, 12)",
     borderRadius: "0.8em",
-    margin: "50px",
+    margin: "3vh",
   },
   tipC: {},
 });
 export default function HardTrainer() {
   const classes = useStyles();
   const router = useRouter();
-  const [emotion, setEmotion] = useState(null);
-  const [progress, setProgress] = useState(null);
-
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    let timer = setTimeout(
+      () => {
+        setProgress(progress + 12);
+      },
+      progress === 0 ? 3000 : 6000
+    );
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [progress]);
   const onEmotionChange = (emotion) => {
-    setEmotion(emotion);
-  };
-  const onProgressChange = (progress) => {
-    setProgress(progress);
+    // setEmotion(emotion);
   };
   const toStopPage = (e) => {
     router.push(
       `/stop/query?count=${progress?.count}&length=${progress?.length}`
     );
   };
-  const getProgressValue = (progress) =>
-    ~~((progress.count * 100) / progress.length);
-
-  const getProgressValueByQuery = () =>
-    router.query.count
-      ? ~~((router.query.count * 100) / router.query.length)
-      : 0;
   return (
     <div>
       <div className={classes.progresser}>
-        <BorderLinearProgress
-          variant="determinate"
-          value={
-            progress ? getProgressValue(progress) : getProgressValueByQuery()
-          }
-        />
+        <BorderLinearProgress variant="determinate" value={progress} />
       </div>
       <div className={classes.container}>
         <div className={classes.stopContainer} onClick={toStopPage}>
