@@ -29,7 +29,6 @@ const useStyles = makeStyles({
 export default function StopPage() {
   const classes = useStyles();
   const router = useRouter();
-  console.log(router.query);
   const getCountBySearch = (query) => ~~((query.count * 100) / query.length);
   const toSoftPage = (e) => {
     router.push(

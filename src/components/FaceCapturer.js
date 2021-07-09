@@ -46,7 +46,6 @@ const FaceCapturer = ({ onEmotionChange, ifHard }) => {
         .withFaceExpressions();
     }
     result && onEmotionChange(result.expressions);
-    // console.log(result?.expressions);
     setTimeout(() => onPlay());
   };
   return (

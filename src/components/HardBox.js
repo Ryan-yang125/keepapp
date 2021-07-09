@@ -1,7 +1,6 @@
 import { useRouter } from "../hooks/useRouter";
 import { makeStyles } from "@material-ui/core";
 import { useEffect, useState } from "react";
-const arrowSrc = "images/icons/arrow.png";
 
 const useStyles = makeStyles({
   root: {},
@@ -30,10 +29,7 @@ export default function HardBox() {
     }
     return `images/hard/h${count}.png`;
   };
-  const getClass = (count) => {
-    // if (checked) {
-    //   return classes.checkIcon;
-    // }
+  const getClass = () => {
     return classes.arrowIcon;
   };
   useEffect(() => {

@@ -1,10 +1,10 @@
 import { HashRouter as Router, Route } from "react-router-dom";
 import Start from "./pages/Start";
-import SoftTrainer from "./pages/SoftTrainer";
 import Home from "./pages/Home";
-import StopPage from "./pages/StopPage";
-import Detail from "./pages/Detail";
+import SoftTrainer from "./pages/SoftTrainer";
 import HardTrainer from "./pages/HardTrainer";
+import Detail from "./pages/Detail";
+import StopPage from "./pages/StopPage";
 import SoftEnd from "./pages/SoftEnd";
 import HardEnd from "./pages/HardEnd";
 export default function App() {

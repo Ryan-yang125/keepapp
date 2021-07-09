@@ -64,15 +64,12 @@ export default function EmotionBox({ emotion, onProgressChange, initCount }) {
       angry: 0.1,
     };
     if (emotionNow >= threshouldTable[check[count]]) {
-      console.log(`${check[count]}: Ok`);
       setChecked(true);
       setCount(count + 1);
       onProgressChange({ count: count + 1, length: check.length });
       setTimeout(() => {
         setChecked(false);
       }, 1000);
-    } else {
-      console.log(`${check[count]}: No`);
     }
   };
   const emotionNumFix = (emotion) => {
@@ -84,7 +81,6 @@ export default function EmotionBox({ emotion, onProgressChange, initCount }) {
       angry: 1,
     };
     result = (~~(num / 10) + fixTable[check[count]]) * 10;
-    console.log(check[count], result);
     return result;
   };
 
