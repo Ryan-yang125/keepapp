@@ -4,6 +4,7 @@ import FaceCapturer from "../components/FaceCapturer";
 import BorderLinearProgress from "../components/BorderLinearProgress";
 import { useState } from "react";
 import { useRouter } from "../hooks/useRouter";
+import HardBox from "../components/HardBox";
 const useStyles = makeStyles({
   container: {
     display: "flex",
@@ -78,7 +79,8 @@ export default function HardTrainer() {
         <div className={classes.stopContainer} onClick={toStopPage}>
           <img src="images/icons/stop.png" alt="stop" />
         </div>
-        <FaceCapturer onEmotionChange={onEmotionChange} />
+        <FaceCapturer onEmotionChange={onEmotionChange} ifHard={true} />
+        <HardBox />
         <div className={classes.bottom}>
           <div
             className={classes.blueButton}

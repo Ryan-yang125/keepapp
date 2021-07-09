@@ -8,7 +8,7 @@ const loadFaceModel = async () => {
   await faceapi.loadFaceExpressionModel(MODEL_URL);
 };
 
-const FaceCapturer = ({ onEmotionChange }) => {
+const FaceCapturer = ({ onEmotionChange, ifHard }) => {
   const videoRef = useRef(null);
   const [ifLoadModel, setIfLoadModel] = useState(false);
 
@@ -55,7 +55,7 @@ const FaceCapturer = ({ onEmotionChange }) => {
         <video
           ref={videoRef}
           onLoadedMetadata={onPlay}
-          style={{ display: "none" }}
+          style={{ display: ifHard ? "initial" : "none" }}
         />
       </div>
     </>
